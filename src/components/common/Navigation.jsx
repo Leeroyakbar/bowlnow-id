@@ -1,0 +1,59 @@
+import { ChefHat, Menu as MenuIcon, X, Search, ShoppingCart } from "lucide-react"
+import clsx from "clsx"
+
+export default function Navigation({ isMenuOpen, setIsMenuOpen }) {
+  return (
+    <nav className="bg-white shadow-md sticky top-0 z-40">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center py-4">
+          {/* Logo */}
+          <div className="flex items-center gap-2 text-2xl font-bold text-orange-600 cursor-pointer">
+            <img src="../../../public/logo-bowl.png" alt="Lili's Kitchen" className="w- h-8" />
+            {/* <p>Lili's Kitchen</p> */}
+          </div>
+
+          {/* Mobile - Search + Cart + Menu */}
+          <div className="md:hidden flex items-center gap-2">
+            <div className="text-gray-700 hover:text-orange-600 cursor-pointer">
+              <Search className="w-5 h-5" />
+            </div>
+            <div className="text-gray-700 hover:text-orange-600 cursor-pointer">
+              <ShoppingCart className="w-6 h-6" />
+            </div>
+            <button className="text-gray-700 hover:text-orange-600" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {console.log("dari navigation " + isMenuOpen)}
+              {isMenuOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
+            </button>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-6">
+            <button className="text-gray-700 hover:text-yellow-400">Home</button>
+            <button className="text-gray-700 hover:text-yellow-400">About Us</button>
+            <button className="text-gray-700 hover:text-yellow-400">Menu</button>
+            <button className="text-gray-700 hover:text-yellow-400">Testimonial</button>
+
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <input type="text" placeholder="Search here..." className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+            </div>
+
+            <div className="text-gray-700 hover:text-yellow-400 cursor-pointer transition-colors">
+              <ShoppingCart className="w-6 h-6" />
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Items (Animated) */}
+        <div className={clsx("md:hidden overflow-hidden transition-all duration-300 ease-in-out", isMenuOpen ? "max-h-60" : "max-h-0")}>
+          <div className="flex flex-col space-y-4 pb-4 pt-2">
+            <button className="text-gray-700 hover:text-yellow-400 text-left">Home</button>
+            <button className="text-gray-700 hover:text-yellow-400 text-left">About Us</button>
+            <button className="text-gray-700 hover:text-yellow-400 text-left">Menu</button>
+            <button className="text-gray-700 hover:text-yellow-400 text-left">Testimonial</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  )
+}

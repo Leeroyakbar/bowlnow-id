@@ -1,0 +1,17 @@
+@import "tailwindcss";
+.rotating-image {
+  animation: spin 120s linear infinite reverse;
+}
+
+.rotating-image:hover {
+  animation-play-state: paused;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
