@@ -2,7 +2,7 @@ import { ChefHat, Menu as MenuIcon, X, Search, ShoppingCart } from "lucide-react
 import clsx from "clsx"
 import { Link, Outlet } from "react-router-dom"
 
-export default function Navigation({ isMenuOpen, setIsMenuOpen, currentPage, onCurrentPage }) {
+export default function Navigation({ isMenuOpen, setIsMenuOpen, currentPage, onCurrentPage, cart, onCartClick }) {
   return (
     <nav className="bg-white shadow-md sticky top-0 z-40">
       {console.log("currentPage " + currentPage)}
@@ -19,8 +19,11 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, currentPage, onC
             <div className="text-gray-700 hover:text-orange-600 cursor-pointer">
               <Search className="w-5 h-5" />
             </div>
-            <div className="text-gray-700 hover:text-orange-600 cursor-pointer">
+            <div className="relative text-gray-700 hover:text-yellow-400 cursor-pointer transition-colors" onClick={onCartClick}>
               <ShoppingCart className="w-6 h-6" />
+              {Object.keys(cart).length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full animate-bounce">{Object.values(cart).reduce((sum, item) => sum + item.qty, 0)}</span>
+              )}
             </div>
             <button className="text-gray-700 hover:text-orange-600" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
@@ -41,8 +44,11 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, currentPage, onC
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <input type="text" placeholder="Search here..." className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400" />
             </div>
-            <div className="text-gray-700 hover:text-yellow-400 cursor-pointer transition-colors">
+            <div className="relative text-gray-700 hover:text-yellow-400 cursor-pointer transition-colors" onClick={onCartClick}>
               <ShoppingCart className="w-6 h-6" />
+              {Object.keys(cart).length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full animate-bounce">{Object.values(cart).reduce((sum, item) => sum + item.qty, 0)}</span>
+              )}
             </div>
           </div>
         </div>
