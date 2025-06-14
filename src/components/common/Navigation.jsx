@@ -1,9 +1,11 @@
 import { ChefHat, Menu as MenuIcon, X, Search, ShoppingCart } from "lucide-react"
 import clsx from "clsx"
+import { Link, Outlet } from "react-router-dom"
 
-export default function Navigation({ isMenuOpen, setIsMenuOpen }) {
+export default function Navigation({ isMenuOpen, setIsMenuOpen, currentPage, onCurrentPage }) {
   return (
     <nav className="bg-white shadow-md sticky top-0 z-40">
+      {console.log("currentPage " + currentPage)}
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -21,23 +23,24 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen }) {
               <ShoppingCart className="w-6 h-6" />
             </div>
             <button className="text-gray-700 hover:text-orange-600" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {console.log("dari navigation " + isMenuOpen)}
               {isMenuOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
             </button>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <button className="text-gray-700 hover:text-yellow-400">Home</button>
-            <button className="text-gray-700 hover:text-yellow-400">About Us</button>
+            <a href="#home" className={`text-gray-700 hover:text-yellow-400 ${currentPage === "home" ? "text-yellow-400" : ""}`} onClick={() => onCurrentPage("home")}>
+              Home
+            </a>
+            <a href="#choose-us" onClick={() => onCurrentPage("choose-us")} className={`text-gray-700 hover:text-yellow-400 ${currentPage === "choose-us" ? "text-yellow-400" : ""}`}>
+              About Us
+            </a>
             <button className="text-gray-700 hover:text-yellow-400">Menu</button>
             <button className="text-gray-700 hover:text-yellow-400">Testimonial</button>
-
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <input type="text" placeholder="Search here..." className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400" />
             </div>
-
             <div className="text-gray-700 hover:text-yellow-400 cursor-pointer transition-colors">
               <ShoppingCart className="w-6 h-6" />
             </div>
@@ -54,6 +57,7 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen }) {
           </div>
         </div>
       </div>
+      <Outlet />
     </nav>
   )
 }
