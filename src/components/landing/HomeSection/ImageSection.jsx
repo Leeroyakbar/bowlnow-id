@@ -5,7 +5,7 @@ export default function ImageSection() {
         {/* Placeholder for food image */}
         <div className="text-center text-gray-600">
           <div className="text-4xl md:text-6xl mb-2">
-            <img src="../../../public/home-img-1.png" alt="Delicious Food" className="rotating-image" />
+            <img src="/home-img-1.png" alt="Delicious Food" className="rotating-image" />
           </div>
         </div>
 
