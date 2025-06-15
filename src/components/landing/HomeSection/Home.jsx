@@ -1,13 +1,13 @@
 import ImageSection from "./ImageSection"
 import TextSection from "./TextSection"
 
-export default function Home() {
+export default function Home({onCartClick}) {
   return (
     <div className="min-h-screen bg-white relative overflow-hidden" id="home">
       <div className="container mx-auto px-4 py-8 md:py-20 relative z-10">
         <div className="flex flex-col-reverse lg:flex-row items-center justify-around min-h-[70vh] gap-8 lg:gap-0">
           {/* Left Section - Text Content */}
-          <TextSection />
+          <TextSection onCartClick={onCartClick} />
           {/* Right Section - Image */}
           <ImageSection />
         </div>
