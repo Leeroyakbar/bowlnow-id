@@ -18,7 +18,7 @@ export default function CheckoutModal({ isOpen, onClose, cart, removeCart }) {
       .join("\n")
 
     const message = `
-Halo Admin! Saya ingin melakukan pemesanan:
+Halo Lili Sayang! Saya ingin melakukan pemesanan:
 
 ${orderDetails}
 

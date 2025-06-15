@@ -1,6 +1,5 @@
 import { InstagramIcon } from "lucide-react"
 import { Mail, MapPin, Phone, Instagram } from "lucide-react"
-import { AiOutlineTikTok } from "react-icons/ai"
 
 export default function Footer() {
   return (
