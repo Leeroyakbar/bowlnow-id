@@ -33,16 +33,13 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, cart, onCartClic
             <Link to="/" className={`text-gray-700 hover:text-yellow-400 ${location.pathname === "/" ? "text-yellow-400" : ""}`}>
               Home
             </Link>
-            <a href="#choose-us" className={`text-gray-700 hover:text-yellow-400 ${location.hash === "#choose-us" ? "text-yellow-400" : ""}`}>
+            <a href="#choose-us" className={`${location.pathname === "/menu" ? "hidden" : ""} text-gray-700 hover:text-yellow-400 ${location.hash === "#choose-us" ? "text-yellow-400" : ""}`}>
               About Us
-            </a>
-            <a href="#popular-menu" className={`text-gray-700 hover:text-yellow-400 ${location.pathname === "/menu" ? "text-yellow-400" : ""}`}>
-              Menu
             </a>
             <Link to="/menu" className={`text-gray-700 hover:text-yellow-400 ${location.pathname === "/menu" ? "text-yellow-400" : ""}`}>
               All Menu
             </Link>
-            <a href="#testimonials" className={`text-gray-700 hover:text-yellow-400 ${location.hash === "#choose-us" ? "text-yellow-400" : ""}`}>
+            <a href="#testimonials" className={`${location.pathname === "/menu" ? "hidden" : ""} text-gray-700 hover:text-yellow-400 ${location.hash === "#choose-us" ? "text-yellow-400" : ""}`}>
               Testimonials
             </a>
 
