@@ -6,7 +6,8 @@ export default function MenuItems({ cart, removeCart, addCart }) {
       category: "Ricebowl",
       description: "Ricebowl with spicy sauce",
       price: "Rp. 15.000",
-      image: "../../../../public/card-menus/sambal-matah.jpg",
+      image: "/sambal-matah.jpg",
+      // image: "../../../../public/card-menus/sambal-matah.jpg",
     },
     {
       id: 2,
@@ -14,7 +15,8 @@ export default function MenuItems({ cart, removeCart, addCart }) {
       category: "Ricebowl",
       description: "Ricebowl with spicy sauce",
       price: "Rp. 15.000",
-      image: "../../../public/card-menus/chicken-katsu.jpg",
+      image: "/chicken-katsu.jpg",
+      // image: "../../../public/card-menus/chicken-katsu.jpg",
     },
     {
       id: 3,
@@ -22,7 +24,8 @@ export default function MenuItems({ cart, removeCart, addCart }) {
       category: "Ricebowl",
       description: "Ricebowl with spicy sauce",
       price: "Rp. 15.000",
-      image: "../../../../public/card-menus/teriyaki-chicken.jpg",
+      image: "/teriyaki-chicken.jpg",
+      // image: "../../../../public/card-menus/teriyaki-chicken.jpg",
     },
   ]
 

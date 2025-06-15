@@ -11,7 +11,8 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, cart, onCartClic
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 text-2xl font-bold text-orange-600 cursor-pointer">
-            <img src="../../../public/logo-bowl.png" alt="Lili's Kitchen" className="w- h-8" />
+            <img src="/logo-bowl.png" alt="Lili's Kitchen" className="w- h-8" />
+            {/* <img src="../../../public/logo-bowl.png" alt="Lili's Kitchen" className="w- h-8" /> */}
           </Link>
 
           {/* Mobile - Search + Cart + Menu */}
