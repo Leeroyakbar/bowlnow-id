@@ -18,7 +18,7 @@ export default function Footer() {
           <ul className="text-sm space-y-2 text-gray-300">
             <li className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-yellow-400" />
-              Jl. Kenangan No.123, Bandung
+              Jl. Raya Sibuhuan, Sibuhuan, Padang Lawas
             </li>
             <li className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-yellow-400" />

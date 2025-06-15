@@ -27,7 +27,7 @@ export default function MenuItems({ cart, removeCart, addCart }) {
   ]
 
   return (
-    <div className="py-12 mb-12">
+    <div className="py-12 ">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         {products.map((product) => {
           const cartItem = cart[product.id]

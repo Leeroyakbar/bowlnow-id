@@ -16,9 +16,7 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, cart, onCartClic
 
           {/* Mobile - Search + Cart + Menu */}
           <div className="md:hidden flex items-center gap-2">
-            <div className="text-gray-700 hover:text-orange-600 cursor-pointer">
-              <Search className="w-5 h-5" />
-            </div>
+            <div className="text-gray-700 hover:text-orange-600 cursor-pointer"></div>
             <div className="relative text-gray-700 hover:text-yellow-400 cursor-pointer transition-colors" onClick={onCartClick}>
               <ShoppingCart className="w-6 h-6" />
               {Object.keys(cart).length > 0 && (
@@ -44,7 +42,9 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, cart, onCartClic
             <Link to="/menu" className={`text-gray-700 hover:text-yellow-400 ${location.pathname === "/menu" ? "text-yellow-400" : ""}`}>
               All Menu
             </Link>
-            <button className="text-gray-700 hover:text-yellow-400">Testimonial</button>
+            <a href="#testimonials" className={`text-gray-700 hover:text-yellow-400 ${location.hash === "#choose-us" ? "text-yellow-400" : ""}`}>
+              Testimonials
+            </a>
 
             <div className="relative text-gray-700 hover:text-yellow-400 cursor-pointer transition-colors" onClick={onCartClick}>
               <ShoppingCart className="w-6 h-6" />
@@ -58,22 +58,21 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, cart, onCartClic
         {/* Mobile Navigation Items (Animated) */}
         <div className={clsx("md:hidden overflow-hidden transition-all duration-300 ease-in-out", isMenuOpen ? "max-h-60" : "max-h-0")}>
           <div className="flex flex-col space-y-4 pb-4 pt-2">
-            <Link to="/" className="text-gray-700 hover:text-yellow-400 text-left">
+            <Link to="/" className="text-gray-700 hover:text-yellow-400 text-left" onClick={() => setIsMenuOpen(false)}>
               Home
             </Link>
-            <Link to="#menu" className={`text-gray-700 hover:text-yellow-400 ${location.pathname === "/menu" ? "text-yellow-400" : ""}`}>
-              Menu
-            </Link>
-            <Link to="/menu" className={`text-gray-700 hover:text-yellow-400 ${location.pathname === "/menu" ? "text-yellow-400" : ""}`}>
-              All Menu
-            </Link>
-            <a href="#choose-us" className="text-gray-700 hover:text-yellow-400 text-left">
+            <a href="#choose-us" className="text-gray-700 hover:text-yellow-400 text-left" onClick={() => setIsMenuOpen(false)}>
               About Us
             </a>
-            <Link to="/menu" className="text-gray-700 hover:text-yellow-400 text-left">
+            <Link to="#menu" className={`text-gray-700 hover:text-yellow-400 ${location.pathname === "/menu" ? "text-yellow-400" : ""}`} onClick={() => setIsMenuOpen(false)}>
               Menu
             </Link>
-            <button className="text-gray-700 hover:text-yellow-400 text-left">Testimonial</button>
+            <Link to="/menu" className={`text-gray-700 hover:text-yellow-400 ${location.pathname === "/menu" ? "text-yellow-400" : ""}`} onClick={() => setIsMenuOpen(false)}>
+              All Menu
+            </Link>
+            <a href="#testimonials" className="text-gray-700 hover:text-yellow-400 text-left" onClick={() => setIsMenuOpen(false)}>
+              Testimonials
+            </a>
           </div>
         </div>
       </div>
