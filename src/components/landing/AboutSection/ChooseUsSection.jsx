@@ -6,19 +6,19 @@ export default function ChooseUsSection() {
     {
       title: "Easy To Order",
       description: "Order your favorite food in just a few clicks through our user-friendly app",
-      image: "/easy-to-order.png",
+      image: "/card/easy-to-order.png",
       // image: "../../../../public/card/easy-to-order.png",
     },
     {
       title: "Fastest Delivery",
       description: "Your food will arrive in less than 30 minutes, ensuring a satisfying experience",
-      image: "/fast-delivery.png",
+      image: "/card/fast-delivery.png",
       // image: "../../../../public/card/fast-delivery.png",
     },
     {
       title: "Quality Ingredients",
       description: "We use only the freshest ingredients to ensure the best flavor and texture",
-      image: "/best-quality.png",
+      image: "/card/best-quality.png",
       // image: "../../../../public/card/best-quality.png",
     },
   ]

@@ -90,7 +90,7 @@ const mockMenus = [
     title: "Nasi Goreng Spesial",
     category: "food",
     price: 20000,
-    image: "/Street Corn Chicken Rice Bowl.jpg",
+    image: "/testi/Street Corn Chicken Rice Bowl.jpg",
     // image: "../../../public/testi/Street Corn Chicken Rice Bowl.jpg",
   },
   {
@@ -98,7 +98,7 @@ const mockMenus = [
     title: "Bakso Urat",
     category: "food",
     price: 18000,
-    image: "/pexels-seizoenenblog-32436917.jpg",
+    image: "/testi/pexels-seizoenenblog-32436917.jpg",
     // image: "../../../public/testi/pexels-seizoenenblog-32436917.jpg",
   },
   {
@@ -106,7 +106,7 @@ const mockMenus = [
     title: "Es Teh Manis",
     category: "drink",
     price: 5000,
-    image: "/Teriyaki Chicken Rice Bowl.jpg",
+    image: "/testi/Teriyaki Chicken Rice Bowl.jpg",
     // image: "../../../public/testi/Teriyaki Chicken Rice Bowl.jpg",
   },
   {
@@ -114,7 +114,7 @@ const mockMenus = [
     title: "Keripik Pisang",
     category: "jajanan",
     price: 8000,
-    image: "/toriyaki-chicken-dark-surface.jpg",
+    image: "/testi/toriyaki-chicken-dark-surface.jpg",
     // image: "../../../public/testi/toriyaki-chicken-dark-surface.jpg",
   },
   {
@@ -122,7 +122,7 @@ const mockMenus = [
     title: "Ayam Bakar",
     category: "food",
     price: 25000,
-    image: "/Street Corn Chicken Rice Bowls.jpg",
+    image: "/testi/Street Corn Chicken Rice Bowls.jpg",
     // image: "../../../public/testi/Street Corn Chicken Rice Bowls.jpg",
   },
   {
@@ -130,7 +130,7 @@ const mockMenus = [
     title: "Jus Jeruk",
     category: "drink",
     price: 12000,
-    image: "/Street Corn Chicken Rice Bowls.jpg",
+    image: "/testi/Street Corn Chicken Rice Bowls.jpg",
     // image: "https://source.unsplash.com/400x300/?orange-juice",
   },
 ]

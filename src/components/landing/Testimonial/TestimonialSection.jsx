@@ -42,19 +42,19 @@ export default function TestimonialSection() {
         <div className="flex-1 grid grid-rows-2 gap-4 max-w-sm relative z-10">
           <div className="row-span-1">
             {/* <img src="../../../../public/testi/toriyaki-chicken-dark-surface.jpg" alt="Customer 1" className="rounded-xl object-cover w-full h-full" /> */}
-            <img src="/toriyaki-chicken-dark-surface.jpg" alt="Customer 1" className="rounded-xl object-cover w-full h-full" />
+            <img src="/testi/toriyaki-chicken-dark-surface.jpg" alt="Customer 1" className="rounded-xl object-cover w-full h-full" />
           </div>
           <div className="row-span-1 grid grid-cols-2 gap-4">
             {/* <img src="../../../../public/testi/pexels-seizoenenblog-32436917.jpg" alt="Customer 2" className="rounded-xl object-cover w-full h-full" />
             <img src="../../../../public/testi/Teriyaki Chicken Rice Bowl.jpg" alt="Customer 3" className="rounded-xl object-cover w-full h-full" /> */}
-            <img src="/pexels-seizoenenblog-32436917.jpg" alt="Customer 2" className="rounded-xl object-cover w-full h-full" />
-            <img src="/Teriyaki Chicken Rice Bowl.jpg" alt="Customer 3" className="rounded-xl object-cover w-full h-full" />
+            <img src="/testi/pexels-seizoenenblog-32436917.jpg" alt="Customer 2" className="rounded-xl object-cover w-full h-full" />
+            <img src="/testi/Teriyaki Chicken Rice Bowl.jpg" alt="Customer 3" className="rounded-xl object-cover w-full h-full" />
           </div>
         </div>
 
         {/* FLOATING BACKGROUND IMAGE */}
         {/* <img src="../../../../public/testi/pexels-seizoenenblog-32436917.jpg" alt="BG" className="hidden md:block absolute left-0 top-0 w-[400px] opacity-10 blur-2xl z-0" /> */}
-        <img src="/pexels-seizoenenblog-32436917.jpg" alt="BG" className="hidden md:block absolute left-0 top-0 w-[400px] opacity-10 blur-2xl z-0" />
+        <img src="/testi/pexels-seizoenenblog-32436917.jpg" alt="BG" className="hidden md:block absolute left-0 top-0 w-[400px] opacity-10 blur-2xl z-0" />
 
         {/* RIGHT TESTIMONIAL CARDS */}
         <div className="flex-1 text-center md:text-left relative z-10">
