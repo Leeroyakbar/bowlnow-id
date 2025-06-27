@@ -1,6 +1,38 @@
+import { useState } from "react"
 import InputField from "./InputField"
+import axios from "axios"
+import toast from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
 
-export default function LoginForm({ handleLogin, userName, password, setUserName, setPassword }) {
+export default function LoginForm() {
+  const [userName, setUserName] = useState("")
+  const [password, setPassword] = useState("")
+  const navigate = useNavigate()
+
+  // Handler untuk submit login
+  const handleLogin = async (e) => {
+    e.preventDefault()
+
+    try {
+      const res = await axios.post("http://127.0.0.1:3000/users/login", {
+        user_name: userName,
+        password: password,
+      })
+
+      const data = res.data
+
+      localStorage.setItem("token", data.data.token)
+      toast.success("Login berhasil!")
+      setTimeout(() => {
+        navigate("/admin")
+      }, 1500)
+    } catch (error) {
+      console.log(error)
+      const errMsg = error.response?.data?.errorMessage || "login gagal"
+      toast.error(errMsg)
+    }
+  }
+
   const MailIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />

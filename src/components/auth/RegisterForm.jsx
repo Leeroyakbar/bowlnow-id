@@ -1,31 +1,44 @@
+import toast from "react-hot-toast"
 import InputField from "./InputField"
+import { useState } from "react"
+import { ShieldUser } from "lucide-react"
+import { User } from "lucide-react"
+import { Lock } from "lucide-react"
+import axios from "axios"
 
-export default function RegisterForm({ handleRegister }) {
-  const UserIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-    </svg>
-  )
+export default function RegisterForm({ setIsLoginView }) {
+  const [userName, setUserName] = useState("")
+  const [password, setPassword] = useState("")
+  const [fullName, setFullName] = useState("")
+  const roleId = "469415d7-05bf-4f71-9b0c-9645236f0805" // customer hardcoded
 
-  const MailIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-    </svg>
-  )
+  const handleRegister = async (e) => {
+    e.preventDefault()
+    // Logika untuk registrasi
 
-  const LockIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-      <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-    </svg>
-  )
+    try {
+      const res = await axios.post("http://127.0.0.1:3000/users/register", {
+        user_name: userName,
+        password: password,
+        full_name: fullName,
+        role_id: roleId,
+        guest_flag: 0,
+      })
+      console.log(res.data)
+
+      toast.success("Registrasi berhasil! Silakan login")
+      setIsLoginView(true)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   // Form untuk Registrasi
   return (
     <form className="space-y-6" onSubmit={handleRegister}>
-      <InputField id="fullname" type="text" placeholder="Nama Lengkap" icon={<UserIcon />} />
-      <InputField id="reg-email" type="email" placeholder="Alamat Email" icon={<MailIcon />} />
-      <InputField id="reg-password" type="password" placeholder="Buat Kata Sandi" icon={<LockIcon />} />
+      <InputField id={"fullname"} type={"text"} placeholder={"Nama Lengkap"} icon={<User color="#9f9fa9" />} value={fullName} onChange={(e) => setFullName(e.target.value)} />
+      <InputField id={"username"} type={"text"} placeholder={"Username"} icon={<ShieldUser color="#9f9fa9" />} value={userName} onChange={(e) => setUserName(e.target.value)} />
+      <InputField id={"password"} type={"password"} placeholder={"Kata Sandi"} icon={<Lock color="#9f9fa9" />} value={password} onChange={(e) => setPassword(e.target.value)} />
       <div>
         <button
           type="submit"

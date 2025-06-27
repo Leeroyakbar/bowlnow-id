@@ -1,53 +1,9 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import RegisterForm from "./RegisterForm"
 import LoginForm from "./LoginForm"
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
-import toast from "react-hot-toast"
 
 export default function Auth() {
-  // State untuk mengontrol tampilan antara form login dan register
   const [isLoginView, setIsLoginView] = useState(true)
-  const navigate = useNavigate()
-  const [userName, setUserName] = useState("")
-  const [password, setPassword] = useState("")
-
-  // Handler untuk submit login
-  const handleLogin = async (e) => {
-    e.preventDefault()
-
-    try {
-      const res = await axios.post("http://127.0.0.1:3000/users/login", {
-        user_name: userName,
-        password: password,
-      })
-
-      const data = res.data
-
-      localStorage.setItem("token", data.data.token)
-      toast.success("Login berhasil!")
-      setTimeout(() => {
-        navigate("/admin")
-      }, 1500)
-    } catch (error) {
-      console.log(error)
-      const errMsg = error.response?.data?.errorMessage || "login gagal"
-      toast.error(errMsg)
-    }
-  }
-
-  // Handler untuk submit registrasi
-  const handleRegister = (e) => {
-    e.preventDefault()
-    // Logika untuk registrasi
-    console.log("Register attempt:", {
-      fullname: e.target.fullname.value,
-      email: e.target["reg-email"].value,
-      password: e.target["reg-password"].value,
-    })
-    alert("Registrasi berhasil! Silakan login. (Cek konsol untuk data)")
-    setIsLoginView(true) // Arahkan ke tampilan login setelah registrasi
-  }
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center font-sans">
@@ -71,7 +27,7 @@ export default function Auth() {
           </div>
 
           {/* Menampilkan form berdasarkan state */}
-          {isLoginView ? <LoginForm handleLogin={handleLogin} userName={userName} password={password} setUserName={setUserName} setPassword={setPassword} /> : <RegisterForm handleRegister={handleRegister} />}
+          {isLoginView ? <LoginForm /> : <RegisterForm setIsLoginView={setIsLoginView} />}
         </div>
 
         <p className="mt-6 text-center text-sm text-gray-500">
