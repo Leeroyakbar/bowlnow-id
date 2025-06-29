@@ -48,7 +48,7 @@ export default function LoginForm() {
 
   return (
     <form className="space-y-6" onSubmit={handleLogin}>
-      <InputField id={"username"} type={"text"} placeholder={"Username"} icon={<MailIcon />} value={userName} onChange={(e) => setUserName(e.target.value)} />
+      <InputField id={"username"} type={"text"} placeholder={"Nama Pengguna"} icon={<MailIcon />} value={userName} onChange={(e) => setUserName(e.target.value)} />
       <InputField id={"password"} type={"password"} placeholder={"Kata Sandi"} icon={<LockIcon />} value={password} onChange={(e) => setPassword(e.target.value)} />
       <div>
         <button
@@ -58,11 +58,11 @@ export default function LoginForm() {
           Masuk
         </button>
       </div>
-      <div className="text-right">
+      {/* <div className="text-right">
         <a href="#" className="text-sm text-orange-600 hover:text-orange-500">
           Lupa kata sandi?
         </a>
-      </div>
+      </div> */}
     </form>
   )
 }

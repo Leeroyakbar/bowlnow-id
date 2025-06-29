@@ -1,33 +1,30 @@
+import { Navigate, Outlet, useLocation } from "react-router-dom"
 import { jwtDecode } from "jwt-decode"
-import toast from "react-hot-toast"
-import { Navigate } from "react-router-dom"
 
-export default function ProtectedRoute({ children }) {
+export default function ProtectedRoute({ allowedRoles }) {
   const token = localStorage.getItem("token")
+  const location = useLocation()
 
-  if (!token) {
-    return <Navigate to="/auth" replace />
-  }
+  if (!token) return <Navigate to="/auth" replace state={{ from: location }} />
 
-  console.log("token", token)
   try {
     const decoded = jwtDecode(token)
-    console.log(decoded)
     const now = Date.now() / 1000
 
     if (decoded.exp < now) {
       localStorage.removeItem("token")
-      return <Navigate to="/auth" replace />
+      return <Navigate to="/auth" replace state={{ from: location }} />
     }
 
-    if (decoded.role !== "admin") {
+    if (!allowedRoles.includes(decoded.role)) {
+      // Kalau role tidak diizinkan, redirect ke halaman umum
       return <Navigate to="/" replace />
     }
-    return children
+
+    return <Outlet />
   } catch (err) {
     console.error("Token invalid", err)
     localStorage.removeItem("token")
-    toast.error("invalid token!")
-    return <Navigate to="/auth" replace />
+    return <Navigate to="/" replace />
   }
 }

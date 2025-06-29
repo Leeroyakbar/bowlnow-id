@@ -29,6 +29,7 @@ export default function RegisterForm({ setIsLoginView }) {
       toast.success("Registrasi berhasil! Silakan login")
       setIsLoginView(true)
     } catch (error) {
+      toast.error(error.response.data?.errorMessage || "Registrasi gagal")
       console.log(error)
     }
   }
@@ -37,7 +38,7 @@ export default function RegisterForm({ setIsLoginView }) {
   return (
     <form className="space-y-6" onSubmit={handleRegister}>
       <InputField id={"fullname"} type={"text"} placeholder={"Nama Lengkap"} icon={<User color="#9f9fa9" />} value={fullName} onChange={(e) => setFullName(e.target.value)} />
-      <InputField id={"username"} type={"text"} placeholder={"Username"} icon={<ShieldUser color="#9f9fa9" />} value={userName} onChange={(e) => setUserName(e.target.value)} />
+      <InputField id={"username"} type={"text"} placeholder={"Nama Pengguna"} icon={<ShieldUser color="#9f9fa9" />} value={userName} onChange={(e) => setUserName(e.target.value)} />
       <InputField id={"password"} type={"password"} placeholder={"Kata Sandi"} icon={<Lock color="#9f9fa9" />} value={password} onChange={(e) => setPassword(e.target.value)} />
       <div>
         <button

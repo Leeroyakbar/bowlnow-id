@@ -3,12 +3,14 @@ import { Outlet, useLocation } from "react-router-dom"
 import Navigation from "./Navigation"
 import CheckoutModal from "./CheckoutModal"
 import { useEffect } from "react"
+import GuestCustomer from "./ProfileModal"
 
 export default function Layout() {
   const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [cart, setCart] = useState({})
   const [showCart, setShowCart] = useState(false)
+  const [showProfile, setShowProfile] = useState(false)
 
   const addCart = (product) => {
     setCart((prev) => {
@@ -43,12 +45,13 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen bg-gray-50 scroll-smooth">
-      <Navigation isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} currentPage={location.pathname} cart={cart} onCartClick={() => setShowCart(true)} />
+      <Navigation isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} currentPage={location.pathname} cart={cart} onCartClick={() => setShowCart(true)} onProfileClick={() => setShowProfile(true)} />
 
       {/* Ini me-render halaman yang aktif (App atau MenuPage) dan mengirim props cart */}
       <Outlet context={{ cart, addCart, removeCart, onCartClick: () => setShowCart(true) }} />
 
       <CheckoutModal isOpen={showCart} onClose={() => setShowCart(false)} cart={cart} removeCart={removeCart} />
+      <GuestCustomer isOpen={showProfile} onClose={() => setShowProfile(false)} />
     </div>
   )
 }

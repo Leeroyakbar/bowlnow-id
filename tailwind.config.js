@@ -13,6 +13,8 @@ export default {
       fontFamily: {
         heading: ["Nunito", "sans-serif"],
         body: ["Inter", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+        modak: ["Modak", "cursive"],
       },
       keyframes: {
         slideInRight: {

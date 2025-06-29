@@ -1,18 +1,17 @@
-import { useState } from "react"
 import RegisterForm from "./RegisterForm"
 import LoginForm from "./LoginForm"
+import { useAuthView } from "../context/AuthContext"
 
 export default function Auth() {
-  const [isLoginView, setIsLoginView] = useState(true)
+  const { isLoginView, setIsLoginView } = useAuthView()
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center font-sans">
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md md:max-w-lg px-6 md:px-0">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800">
             BowlNow<span className="text-orange-500">.id</span>
           </h1>
-          <p className="text-gray-500 mt-2">Dasbor Admin</p>
         </div>
 
         <div className="bg-white p-8 rounded-xl shadow-lg">
