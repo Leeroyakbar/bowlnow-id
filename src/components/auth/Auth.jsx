@@ -1,9 +1,19 @@
 import RegisterForm from "./RegisterForm"
 import LoginForm from "./LoginForm"
 import { useAuthView } from "../context/AuthContext"
+import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 
 export default function Auth() {
+  const navigate = useNavigate()
   const { isLoginView, setIsLoginView } = useAuthView()
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      navigate("/admin")
+    }
+  }, [navigate])
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center font-sans">
