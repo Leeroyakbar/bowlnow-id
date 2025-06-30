@@ -35,6 +35,9 @@ dependencies:
   recharts:
     specifier: ^3.0.0
     version: 3.0.0(@types/react@19.1.6)(react-dom@19.1.0)(react-is@19.1.0)(react@19.1.0)(redux@5.0.1)
+  sweetalert2:
+    specifier: ^11.22.2
+    version: 11.22.2
   tailwindcss:
     specifier: ^4.1.8
     version: 4.1.8
@@ -2264,6 +2267,10 @@ packages:
     dependencies:
       has-flag: 4.0.0
     dev: true
+
+  /sweetalert2@11.22.2:
+    resolution: {integrity: sha512-GFQGzw8ZXF23PO79WMAYXLl4zYmLiaKqYJwcp5eBF07wiI5BYPbZtKi2pcvVmfUQK+FqL1risJAMxugcPbGIyg==}
+    dev: false
 
   /tailwindcss@4.1.8:
     resolution: {integrity: sha512-kjeW8gjdxasbmFKpVGrGd5T4i40mV5J2Rasw48QARfYeQ8YS9x02ON9SFWax3Qf616rt4Cp3nVNIj6Hd1mP3og==}

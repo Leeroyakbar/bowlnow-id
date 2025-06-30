@@ -1,8 +1,7 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
 import AdminHeader from "./navigation/AdminHeader"
-import { Sidebar } from "lucide-react"
 import AdminSidebar from "./navigation/AdminSidebar"
 import AdminTransaction from "./transaction/AdminTransaction"
 import MainDashboard from "./dashboard/MainDashboard"
@@ -11,11 +10,22 @@ import FoodDashboard from "./Food/FoodDasboard"
 import AdminCategory from "./category/AdminCategory"
 import AdminProfile from "./profile/AdminProfile"
 import { useEffect } from "react"
+import { jwtDecode } from "jwt-decode"
+import axios from "axios"
 
 const AdminDashboard = () => {
-  const [activeSection, setActiveSection] = useState("dashboard")
   const navigate = useNavigate()
+  const [activeSection, setActiveSection] = useState("dashboard")
 
+  const [user, setUser] = useState({
+    userId: 1,
+    fullName: "Lili Cantik",
+    address: "Jl. Raya Sibuhuan, Sibuhuan, Padang Lawas",
+    phone: "0822-7336-6718",
+    photoUrl: "",
+    email: "lilirhm.yani@gmail.com",
+    role: "admin",
+  })
   // const [editingItem, setEditingItem] = useState(null)
 
   // Sample data - dalam implementasi nyata akan dari API
@@ -59,13 +69,50 @@ const AdminDashboard = () => {
   }
 
   useEffect(() => {
-    console.log("active section", activeSection)
-  })
+    const token = localStorage.getItem("token")
+    if (!token) {
+      // handle redirect
+      navigate("/auth")
+      return
+    }
 
+    let decoded
+    try {
+      decoded = jwtDecode(token)
+    } catch (err) {
+      localStorage.removeItem("token")
+      navigate("/auth")
+      return
+    }
+
+    const userId = decoded.user_id
+
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get(`http://127.0.0.1:3000/users/${userId}`)
+        const userData = res?.data?.data
+        setUser({
+          userId: userData?.user_id,
+          fullName: userData?.full_name,
+          address: userData?.address,
+          phone: userData?.phone_number,
+          photoUrl: `http://127.0.0.1:3000/${userData?.image}`,
+          email: userData?.email,
+          role: userData?.role_name,
+        })
+      } catch (error) {
+        toast.error(error?.response?.data?.errorMessage || "Gagal mengambil data user")
+      }
+    }
+
+    fetchUser()
+  }, [navigate]) // atau [activeSection] jika ingin fetch ulang saat activeSection berubah
+
+  console.log(user)
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       {/* Header di atas */}
-      <AdminHeader setActiveSection={setActiveSection} handleLogout={handleLogout} />
+      <AdminHeader setActiveSection={setActiveSection} handleLogout={handleLogout} user={user} />
 
       {/* Isi: Sidebar & Konten di bawah header */}
       <div className="flex flex-1">
@@ -79,7 +126,7 @@ const AdminDashboard = () => {
           {activeSection === "foods" && <FoodDashboard foods={foods} setFoods={setFoods} categories={categories} />}
           {activeSection === "categories" && <AdminCategory categories={categories} setCategories={setCategories} />}
           {activeSection === "transactions" && <AdminTransaction transactions={transactions} setTransactions={setTransactions} />}
-          {activeSection === "profile" && <AdminProfile />}
+          {activeSection === "profile" && <AdminProfile user={user} setUser={setUser} />}
         </div>
       </div>
     </div>
